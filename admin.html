@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifestyle Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="login-container">
+    <div class="login-box">
+      <h1>LIFESTYLE.</h1>
+      <p>Admin Portal</p>
+      <input type="password" id="admin-password" placeholder="Enter Admin Password">
+      <button onclick="checkPassword()">Login</button>
+      <p id="login-error" class="error"></p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD (Hidden until logged in) -->
+  <div id="dashboard" class="dashboard-container" style="display: none;">
+    <header class="admin-header">
+      <h2>LIFESTYLE. <span style="font-size: 0.9rem; color: #9a9a9a; font-weight: 400;">Admin Dashboard</span></h2>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </header>
+
+    <main class="admin-main">
+      <!-- ADD PRODUCT FORM -->
+      <section class="admin-card">
+        <h3>Add New Product</h3>
+        <form id="add-product-form">
+          <div class="form-grid">
+            <input type="text" id="p-name" placeholder="Product Name (e.g. Red Hoodie)" required>
+            <input type="text" id="p-category" placeholder="Category (e.g. T-Shirts)" required>
+            <input type="number" id="p-price" placeholder="Price (e.g. 40000)" required>
+            <input type="text" id="p-image" placeholder="Image URL or Filename" required>
+            <select id="p-tag">
+              <option value="new">New</option>
+              <option value="bestseller">Best Seller</option>
+              <option value="none">None</option>
+            </select>
+            <label style="display: flex; align-items: center; gap: 8px; color: white;">
+              <input type="checkbox" id="p-isNew" checked> Is New?
+            </label>
+          </div>
+          <button type="submit" class="btn-primary">Add Product to Database</button>
+        </form>
+      </section>
+
+      <!-- PRODUCT LIST -->
+      <section class="admin-card">
+        <h3>Current Inventory</h3>
+        <div class="table-container">
+          <table id="products-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-list">
+              <!-- Products will load here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
